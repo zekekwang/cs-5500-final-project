@@ -44,7 +44,7 @@ window.addEventListener('resize', showButton);
                         </li>
                         <li className='nav-item'>
                             <Link to='/coffee-basics' className='nav-links' onClick={closeMobileMenu}>
-                                Coffee basics
+                                Coffee GPT
                             </Link>
                         </li>
                         <li className='nav-item'>
