@@ -1,0 +1,45 @@
+.videos {
+    padding: 4rem;
+    background: #fff;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .videos__container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    max-width: 1120px;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+
+  .videos__item {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: 0 18rem;
+    max-width: 560px;
+    border-radius: 10px;
+    margin-left: 1%;
+    
+  }
+
+  
+  
+  @media only screen and (min-width: 1024px) {
+    .videos__items {
+      display: flex;
+    }
+  }
+  
+  @media only screen and (max-width: 1024px) {
+    .videos__item {
+      margin-bottom: 2rem;
+    }
+  }
+  
+  
