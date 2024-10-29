@@ -43,6 +43,11 @@ window.addEventListener('resize', showButton);
                             </Link>
                         </li>
                         <li className='nav-item'>
+                            <Link to='/shopping' className='nav-links' onClick={closeMobileMenu}>
+                                Shopping
+                            </Link>
+                        </li>
+                        <li className='nav-item'>
                             <Link to='/coffee-basics' className='nav-links' onClick={closeMobileMenu}>
                                 Coffee GPT
                             </Link>
