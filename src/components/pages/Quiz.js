@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Shopping from './components/pages/Shopping';
+import './Shopping.css'
 import { loadQuestion } from './Shopping';
 
 function Quiz() {
