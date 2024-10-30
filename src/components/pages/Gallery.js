@@ -13,13 +13,13 @@ function Gallery() {
                     <video
                         src='/videos/roasting.mp4'
                         width="550"
-                        height="450"
+                        height="50"
                         controls
                     />
                     <video 
                         src='/videos/cooling.mp4'
                         width="550"
-                        height="450"
+                        height="250"
                         controls
                     />
                      <video 
