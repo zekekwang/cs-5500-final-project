@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import './App.css';
-import './Shopping.css'
+import Quiz from './Quiz';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './components/pages/Home';
 import Booking from './components/pages/Booking';
@@ -9,24 +9,9 @@ import Shopping from './components/pages/Shopping';
 import CoffeeBasics from './components/pages/CoffeeBasics';
 import SignUp from './components/pages/SignUp';
 import Gallery from './components/pages/Gallery';
-import {startQuiz, loadQuestion} from './Shopping'
 
 
 function App() {
-
-  const [quizStarted, setQuizStarted] = useState(false);
-    const [question, setQuestion] = useState('');
-
-    const handleStartQuiz = () => {
-        setQuizStarted(true);
-        const questionText = loadQuestion();
-        setQuestion(questionText);
-    };
-
-    const answerQuestion = (selectedAnswer) => {
-        alert("You selected: " + selectedAnswer);
-    };
-
   return (
 
     <>
@@ -41,6 +26,7 @@ function App() {
           <Route path='coffee-basics' element={<CoffeeBasics />} />
           <Route path='sign-up' element={<SignUp />} />
           <Route path='gallery' element={<Gallery />} />
+          <Route path='quiz' element={<Quiz />} />
           
         </Routes>
 
@@ -50,10 +36,7 @@ function App() {
       </Router>
     </>
 
-
-
-
-  );
+  )
 }
 
 export default App;
