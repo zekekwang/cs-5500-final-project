@@ -1,31 +1,52 @@
-#coffee-container {
+.shopping-container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  max-height: 80vh; 
+  overflow-y: auto; 
 }
 
-.bean-card {
-  width: 45%;
-  text-align: center;
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 20px;
+  width: 100%;
+  max-width: 500px; 
+}
+
+.image-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 16px;
-  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.bean-card img {
+.shopping-image {
   width: 100%;
   height: auto;
+  max-height: 200px; 
+  object-fit: cover; 
   border-radius: 4px;
 }
 
-.buy-button {
-  margin-top: 10px;
+.like-button {
+  margin-top: 8px;
   padding: 8px 12px;
   background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.like-button:hover {
+  background-color: #0056b3;
+}
+
+.load-more-trigger {
+  height: 1px; 
 }

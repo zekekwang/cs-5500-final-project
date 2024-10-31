@@ -1,24 +1,44 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from 'react';
 import '../../App.css';
 import './Shopping.css';
 
-const coffeeBeans = [
-  { name: "Arabica", image: require("./ShoppingImages/arabica.png")},
-  { name: "Robusta", image: require("./ShoppingImages/robusta.jpg")},
-  { name: "Liberica", image: require("./ShoppingImages/liberica.jpg")},
-  { name: "Excelsa", image: require("./ShoppingImages/excelsa.png")}
-];
+const importAll = (r) => r.keys().map(r);
+const images = importAll(require.context('./ShoppingImages', false, /\.(png|jpe?g|svg)$/));
 
 const Shopping = () => {
+  const [visibleImages, setVisibleImages] = useState(4);
+  const loadMoreRef = useRef();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setVisibleImages((prev) => Math.min(prev + 4, images.length));
+      }
+    });
+
+    if (loadMoreRef.current) {
+      observer.observe(loadMoreRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleLike = (index) => {
+    console.log(`Image ${index + 1} liked!`);
+  };
+
   return (
-    <div id="coffee-container">
-      {coffeeBeans.map((bean, index) => (
-        <div className="bean-card" key={index}>
-          <img src={bean.image} alt={bean.name} className="bean-image" />
-          <h3>{bean.name}</h3>
-          <button className="buy-button">Buy Now</button>
-        </div>
-      ))}
+    <div className="shopping-container">
+      <div className="image-grid">
+        {images.slice(0, visibleImages).map((src, index) => (
+          <div className="image-card" key={index}>
+            {/* Access the image source using src.default in case it’s a module */}
+            <img src={src.default} alt={`Image ${index + 1}`} className="shopping-image" />
+            <button className="like-button" onClick={() => handleLike(index)}>Like</button>
+          </div>
+        ))}
+      </div>
+      <div ref={loadMoreRef} className="load-more-trigger" />
     </div>
   );
 };
