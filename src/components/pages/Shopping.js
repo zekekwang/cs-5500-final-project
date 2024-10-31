@@ -1,23 +1,26 @@
 import React from "react";
 import '../../App.css';
+import './Shopping.css';
 
+const coffeeBeans = [
+  { name: "Arabica", image: require("./ShoppingImages/arabica.png")},
+  { name: "Robusta", image: require("./ShoppingImages/robusta.jpg")},
+  { name: "Liberica", image: require("./ShoppingImages/liberica.jpg")},
+  { name: "Excelsa", image: require("./ShoppingImages/excelsa.png")}
+];
 
-function Shopping() {
-
-    const openQuiz = () => {
-        window.open('/quiz', '_blank', 'noopener,noreferrer');
-    };
-
-    return (
-        <div className="shopping-page">
-        <h1>Shopping Page</h1>
-        <button onClick={openQuiz}>Take Quiz</button>
+const Shopping = () => {
+  return (
+    <div id="coffee-container">
+      {coffeeBeans.map((bean, index) => (
+        <div className="bean-card" key={index}>
+          <img src={bean.image} alt={bean.name} className="bean-image" />
+          <h3>{bean.name}</h3>
+          <button className="buy-button">Buy Now</button>
         </div>
-    )
+      ))}
+    </div>
+  );
 };
-
-export function loadQuestion() {
-    return "What is the capital of France?";
-}
 
 export default Shopping;
