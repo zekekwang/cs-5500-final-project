@@ -8,6 +8,7 @@
 .home,
 .booking,
 .shopping,
+.intro,
 .coffee-basics,
 .gallery,
 .sign-up {
@@ -27,6 +28,14 @@
 }
 
 .shopping {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
+  font-size: 100px;
+}
+
+.intro {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
