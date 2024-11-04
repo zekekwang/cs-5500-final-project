@@ -3,7 +3,6 @@ import { getDatabase, ref, set, remove, serverTimestamp, Database } from 'fireba
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDQccv87aMMtg1LpucUVhl8BbsRt6H4EN0",
     authDomain: "cs5500-coffeebrewing.firebaseapp.com",
     databaseURL:"https://cs5500-coffeebrewing-default-rtdb.europe-west1.firebasedatabase.app/",
     projectId: "cs5500-coffeebrewing",
