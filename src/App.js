@@ -19,14 +19,17 @@ function App() {
     
     useEffect(() => {
       console.log("useEffect has been triggered");  
+      let storedVisitorId = localStorage.getItem("visitorId");
       
-      const newVisitorId = `visitor_${Date.now()}`;
-      setVisitorID(newVisitorId);
 
-      const visitorRef = ref(db, 'visitors/' + newVisitorId);
+    if (!storedVisitorId) {
+      const storedVisitorId = `visitor_${Date.now()}`;
+      localStorage.setItem("visitorId", storedVisitorId); // Save it to local storage
+
+      const visitorRef = ref(db, 'visitors/' + storedVisitorId);
 
       set(visitorRef, {
-        id: newVisitorId,
+        id: storedVisitorId,
         createdAt: serverTimestamp(),
         userstaytime: [0, 0, 0, 0], // Initialize userstaytime as a 4-element array
         status: "active",
@@ -37,9 +40,13 @@ function App() {
       .catch((error) => {
         console.error("Error setting visitor data in Realtime Database:", error);
       });
+    }
+
+    setVisitorID(storedVisitorId);
 
        // Remove the visitor document on page unload
        const handleUnload = () => {
+        const visitorRef = ref(db, 'visitors/' + storedVisitorId);
         remove(visitorRef)
           .then(() => {
             console.log("Visitor data removed successfully from Realtime Database");
