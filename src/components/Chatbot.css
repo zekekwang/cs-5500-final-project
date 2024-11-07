@@ -1,0 +1,96 @@
+/* General Chatbot Window Styling */
+df-messenger {
+    --df-messenger-bot-message: #5C4033; /* Dark brown background for bot messages */
+    --df-messenger-button-titlebar-color: #8B5E3C; /* Lighter brown for title bar */
+    --df-messenger-button-titlebar-font-color: #FFF5E1; /* Light cream for the font on title bar */
+    --df-messenger-chat-background-color: #FFF5E1; /* Light cream background for chat window */
+    --df-messenger-font-color: #5C4033; /* Dark brown for general font color */
+    --df-messenger-send-icon: #8B5E3C; /* Light brown for the send button icon */
+}
+
+/* Chat Window Title Styling */
+df-messenger .df-messenger-wrapper .df-titlebar {
+    background-color: #8B5E3C !important; /* Same brown as title bar */
+    font-family: 'Lora', serif; /* Elegant serif font for the title */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Chatbot Message Styling */
+df-messenger .df-messenger-wrapper .df-message-from-bot {
+    background-color: #5C4033 !important; /* Dark brown bot message bubbles */
+    color: #FFF5E1 !important; /* Light cream text color */
+    border-radius: 12px 12px 12px 0px; /* Rounded corners for bot messages */
+    padding: 10px;
+    font-family: 'Lora', serif;
+    font-size: 14px;
+}
+
+/* User Message Styling */
+df-messenger .df-messenger-wrapper .df-message-from-user {
+    background-color: #A67C52 !important; /* Medium brown for user message */
+    color: white !important; /* White text */
+    border-radius: 12px 12px 0px 12px; /* Rounded corners for user messages */
+    padding: 10px;
+    font-family: 'Lora', serif;
+    font-size: 14px;
+}
+
+/* Chat Input Field */
+df-messenger .df-messenger-wrapper .df-input-box {
+    background-color: #FFF5E1 !important; /* Light cream input box background */
+    color: #5C4033 !important; /* Dark brown text in input */
+    border: 1px solid #8B5E3C; /* Light brown border for input */
+    border-radius: 8px;
+    font-family: 'Lora', serif;
+    font-size: 14px;
+}
+
+/* Placeholder text color in input box */
+df-messenger .df-messenger-wrapper .df-input-placeholder {
+    color: #A67C52 !important; /* Medium brown for placeholder text */
+}
+
+/* Send Button Styling */
+df-messenger .df-messenger-wrapper .df-send-icon {
+    background-color: #8B5E3C !important; /* Light brown background for send button */
+    border-radius: 50%; /* Round send button */
+}
+
+/* Styling Chatbot Container */
+df-messenger .df-messenger-wrapper {
+    border-radius: 15px !important; /* Rounded chat window */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for the chat window */
+}
+
+/* Styling the Quick Replies */
+df-messenger .df-messenger-wrapper .df-quick-replies button {
+    background-color: #A67C52 !important; /* Medium brown for quick reply buttons */
+    color: white !important; /* White text on quick replies */
+    font-family: 'Lora', serif;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin: 5px;
+}
+
+/* Hover effect on Quick Replies */
+df-messenger .df-messenger-wrapper .df-quick-replies button:hover {
+    background-color: #8B5E3C !important; /* Darker brown on hover */
+}
+
+/* Chatbot Button Icon (Collapsed Chat) */
+df-messenger .df-button {
+    background-color: #8B5E3C !important; /* Light brown for the button */
+    color: white !important;
+    font-family: 'Lora', serif;
+    border-radius: 50%; /* Round button */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Change Chatbot Button Size */
+df-messenger .df-button {
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+    line-height: 60px;
+}
