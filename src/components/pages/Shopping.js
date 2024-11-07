@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../App.css';
 import './Shopping.css';
+import { db } from './firebase';
+import { ref, update } from 'firebase/database';
 import img1 from './ShoppingImages/1.png';
 import img2 from './ShoppingImages/2.png';
 import img3 from './ShoppingImages/3.png';
@@ -48,14 +50,54 @@ const coffeeProducts = [
 ];
 
 
-const Shopping = () => {
-    const [currentRow, setCurrentRow] = useState(0);
+const Shopping = ({visitorId}) => {
+    const [currentPage, setCurrentPage] = useState(0);
+    const [startTime, setStartTime] = useState(Date.now());
+    const [usershoppingpagestaytime, setUserShoppingPageStayTime] = useState([0, 0, 0]); 
+    const [isTrackingEnabled, setIsTrackingEnabled] = useState(true);
+
+
+
+    const handleButtonClick = async() => {
+
+      if (isTrackingEnabled && currentPage < 3) {
+      console.log("user clicked the button"); 
+      const timeSpent = Date.now() - startTime; 
+
+      // Update the stayTimes array with the time for the current page
+      const updatedShoppingStayTimes = [...usershoppingpagestaytime];
+      updatedShoppingStayTimes[currentPage] = timeSpent;
+      setUserShoppingPageStayTime(updatedShoppingStayTimes);
+
+      if(visitorId){
+        const visitorRef = ref(db, 'visitors/' + visitorId);
+      try {
+        await update(visitorRef, { usershoppingpagestaytime : updatedShoppingStayTimes });
+        console.log("User stay time updated:", usershoppingpagestaytime);
+      } catch (error) {
+        console.error("Error updating user stay time:", error);
+      }
+      }else{
+        console.error("Visitor ID is missing, cannot update Firestore.");
+      }
+    }
   
-    const handleNextRow = () => {
-      setCurrentRow(currentRow + 1);
-    };
+      // Reset the start time for tracking time on the next row
+      setStartTime(Date.now());
+      setCurrentPage((prevPage) => prevPage + 1);
+
+      if (currentPage === 2) {
+        setIsTrackingEnabled(false); // Disable tracking after the third page
+      }
+  };
+
+
+    // Set initial start time when the component mounts
+  useEffect(() => {
+    setStartTime(Date.now());
+  }, [currentPage]);
   
-    const displayProducts = coffeeProducts.slice(currentRow * 3, currentRow * 3 + 3);
+    const displayProducts = coffeeProducts.slice(currentPage * 3, currentPage * 3 + 3);
   
     return (
       <div className="shopping-page">
@@ -70,13 +112,13 @@ const Shopping = () => {
           ))}
         </div>
         <div className="button-container">
-          {currentRow < 3 ? (
+          {currentPage < 3 ? (
             <>
-              <button className="thumbs-up-button" onClick={handleNextRow}>👍</button>
-              <button className="no-button" onClick={handleNextRow}>👎</button>
+              <button className="thumbs-up-button" onClick={handleButtonClick}>👍</button>
+              <button className="no-button" onClick={handleButtonClick}>👎</button>
             </>
-          ) : currentRow < 6 ? (
-            <button className="another-batch-button" onClick={handleNextRow}>Another Batch</button>
+          ) : currentPage < 6 ? (
+            <button className="another-batch-button" onClick={handleButtonClick}>Another Batch</button>
           ) : null}
         </div>
       </div>

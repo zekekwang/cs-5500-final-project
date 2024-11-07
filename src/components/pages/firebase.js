@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, set, remove, serverTimestamp, Database } from 'firebase/database';
+import { getFirestore } from 'firebase/firestore';
 
 
 const firebaseConfig = {
