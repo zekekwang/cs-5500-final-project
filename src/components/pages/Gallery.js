@@ -5,12 +5,12 @@ import Footer from '../Footer';
 
 function Gallery() {
     const videos = [
-        "https://www.youtube.com/embed/j3VNqtJUoz0?si=PqviAmT51Qu_bQre",
-        'https://www.youtube.com/embed/VIDEO_ID_2',
-        'https://www.youtube.com/embed/VIDEO_ID_3',
-        'https://www.youtube.com/embed/VIDEO_ID_4',
-        'https://www.youtube.com/embed/VIDEO_ID_5',
-        'https://www.youtube.com/embed/VIDEO_ID_6'
+        "https://www.youtube.com/embed/NzMs-Oghqy0?si=NZuDpmjIuC7IR0Sc",
+        'https://www.youtube.com/embed/xrMVZ5guOc8?si=rOFbyCwLxN5DjP3E',
+        'https://www.youtube.com/embed/8_tcGUlxMa8?si=FfbTC3B5XGGyMcRT',
+        'https://www.youtube.com/embed/KBnDq1Zaqms?si=mvRvtkHyxCe3mUMJ',
+        'https://www.youtube.com/embed/N9l0B2wJS4c?si=rPwPDkeDamHYMh89',
+        'https://www.youtube.com/embed/AK6EBgWUamg?si=iUvIZJF-PPQB6KtA'
     ];
 
     return (
